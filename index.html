@@ -2172,6 +2172,17 @@
   <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
   <script>
+    // Disable Right-click
+document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+// Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+document.onkeydown = function(e) {
+    if (e.keyCode == 123 || 
+        (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) || 
+        (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
+        return false;
+    }
+};
     /* ── Navbar scroll ── */
     const navbar = document.getElementById('navbar');
     const backTop = document.getElementById('backTop');
