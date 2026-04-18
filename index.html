@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Truust Elevators – Rise with Trust</title>
+  <title class="notranslate">Truust Elevators – Rise with Trust</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap"
@@ -307,6 +307,48 @@
     .nav-links a:hover {
       color: var(--gold-light);
       background: rgba(212, 160, 23, 0.1);
+    }
+
+    .lang-btn {
+      background: rgba(212, 160, 23, 0.1);
+      color: var(--gold-light);
+      border: 1px solid rgba(212, 160, 23, 0.3);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .lang-btn:hover {
+      background: rgba(212, 160, 23, 0.2);
+      box-shadow: 0 0 10px rgba(212, 160, 23, 0.3);
+    }
+
+    /* Hide the google translate toolbar for clean UI */
+    .goog-te-banner-frame,
+    .VIpgJd-ZVi9od-ORHb-OEVmcd,
+    #goog-gt-tt,
+    .goog-te-balloon-frame,
+    iframe[name="goog_te_banner_frame"] {
+      display: none !important;
+    }
+
+    body {
+      top: 0px !important;
+      position: static !important;
+    }
+
+    .goog-text-highlight {
+      background-color: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
     }
 
     .nav-cta {
@@ -1636,7 +1678,7 @@
   <!-- NAVBAR -->
   <nav id="navbar">
     <a href="#home" class="nav-logo">
-      <div class="nav-logo-text">
+      <div class="nav-logo-text notranslate">
         <span>TRUUST</span>
         <span>Elevators</span>
       </div>
@@ -1647,17 +1689,30 @@
       <li><a href="#why-us">About</a></li>
       <li><a href="#testimonials">Reviews</a></li>
       <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+      <li
+        style="display: flex; align-items: center; gap: 8px; margin-left: 8px; border-left: 1px solid rgba(255,255,255,0.2); padding-left: 16px;">
+        <span
+          style="color: rgba(255,255,255,0.6); font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">Language:</span>
+        <button onclick="switchLang()" id="lang-btn" class="lang-btn">🌐 Telugu</button>
+      </li>
     </ul>
     <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
   </nav>
 
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#home" onclick="toggleMenu()">Home</a>
+    <a href="#home" onclick="toggleMenu()" class="notranslate">Home</a>
     <a href="#services" onclick="toggleMenu()">Services</a>
     <a href="#why-us" onclick="toggleMenu()">About</a>
     <a href="#testimonials" onclick="toggleMenu()">Reviews</a>
     <a href="#contact" onclick="toggleMenu()">Contact Us</a>
+    <div style="width: 100%; margin-top: 20px; border-top: 1px solid rgba(212, 160, 23, 0.2); padding-top: 20px;">
+      <span
+        style="color: rgba(255,255,255,0.6); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 12px; text-align: left;">Switch
+        Language:</span>
+      <button onclick="switchLang(); toggleMenu();" id="mobile-lang-btn" class="lang-btn"
+        style="width: 100%; padding: 12px; font-size: 16px;">🌐 Telugu</button>
+    </div>
   </div>
 
   <!-- HERO -->
@@ -2070,7 +2125,15 @@
         <div class="gold-line" style="margin:16px auto 20px;"></div>
         <p class="section-sub" style="margin:0 auto;">Ready to discuss your elevator needs? Pick up the phone — our
           experts are available 24/7.</p>
-        <div class="call-only-note">📵 We accept <strong>Phone Calls only</strong> — no messages or texts</div>
+        <div class="call-only-note" style="margin-bottom: 20px;">We accept Phone Calls and WhatsApp!</div>
+        <div
+          style="text-align: center; width: 100%; display: flex; justify-content: center; align-items: center; margin-bottom: 40px; margin-top: 20px;">
+          <a href="https://wa.me/919492111555?text=Hello%20TRUUST%20Elevators,%20I%20have%20an%20enquiry"
+            target="_blank" class="btn-primary"
+            style="background: linear-gradient(135deg, #25D366, #128C7E); color: #fff; box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4); border: none;">
+            💬 Send Enquiry
+          </a>
+        </div>
       </div>
 
       <div class="call-grid">
@@ -2162,7 +2225,7 @@
       <div class="footer-bottom">
         <p>© 2024 Truust Elevators. All rights reserved. | East &amp; West Godavari, AP, India</p>
         <div class="credit-box">
-          ⚡ Website by <a href="tel:9581898403">Aurelius Nexus</a> &nbsp;|&nbsp; For websites: <a
+          ⚡ Website by <a href="tel:9581898403">Krishna Reddy</a> &nbsp;|&nbsp; For websites: <a
             href="tel:9581898403">📞 9581898403</a> (Call only)
         </div>
       </div>
@@ -2172,17 +2235,16 @@
   <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
   <script>
-    // Disable Right-click
-document.addEventListener('contextmenu', (e) => e.preventDefault());
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
 
-// Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
-document.onkeydown = function(e) {
-    if (e.keyCode == 123 || 
-        (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) || 
+    // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+    document.onkeydown = function (e) {
+      if (e.keyCode == 123 ||
+        (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) ||
         (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0))) {
         return false;
-    }
-};
+      }
+    };
     /* ── Navbar scroll ── */
     const navbar = document.getElementById('navbar');
     const backTop = document.getElementById('backTop');
@@ -2553,6 +2615,46 @@ document.onkeydown = function(e) {
     setTimeout(spawnStrike, 600);
     setTimeout(spawnStrike, 1400);
   </script>
+
+  <div id="google_translate_element" style="display:none;"></div>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'en,te' }, 'google_translate_element');
+    }
+    function changeLanguage(langCode) {
+      var selectField = document.querySelector(".goog-te-combo");
+      if (selectField) {
+        selectField.value = langCode;
+        selectField.dispatchEvent(new Event('change'));
+      }
+    }
+    function switchLang() {
+      var btn = document.getElementById('lang-btn');
+      var mobileBtn = document.getElementById('mobile-lang-btn');
+
+      if (!document.querySelector(".goog-te-combo")) {
+        setTimeout(switchLang, 500);
+        return;
+      }
+
+      if (btn.innerText.includes('Telugu') || btn.innerText.includes('తెలుగు')) {
+        changeLanguage('te');
+        btn.innerText = '🌐 English';
+        if (mobileBtn) mobileBtn.innerText = '🌐 English';
+      } else {
+        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + location.hostname + ";";
+
+        if (window.location.hash.includes('googtrans')) {
+          window.history.replaceState(null, null, window.location.pathname + window.location.search);
+        }
+
+        window.location.reload();
+      }
+    }
+  </script>
+  <script type="text/javascript"
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 
